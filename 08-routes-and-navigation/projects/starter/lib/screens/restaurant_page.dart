@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../components/components.dart';
+import '../constants.dart';
 import '../models/models.dart';
 import 'checkout_page.dart';
 
@@ -178,7 +180,9 @@ class _RestaurantPageState extends State<RestaurantPage> {
         },
         onSubmit: (order) {
           widget.ordersManager.addOrder(order);
-          // TODO: Navigate to Orders Page
+          context.pop();
+          context.go('/${YummyTab.orders.value}');
+
         },
       )),
     );

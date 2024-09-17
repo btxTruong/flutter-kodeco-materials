@@ -3,6 +3,8 @@ import 'constants.dart';
 import '../components/components.dart';
 import '../models/models.dart';
 import '../screens/screens.dart';
+import 'package:go_router/go_router.dart';
+
 
 class Home extends StatefulWidget {
   const Home({
@@ -57,7 +59,7 @@ class _HomeState extends State<Home> {
       MyOrdersPage(orderManager: widget.ordersManager),
       AccountPage(
           onLogOut: (logout) async {
-            // TODO: Logout and go to login
+            widget.auth.signOut().then((value) => context.go('/login'));
           },
           user: User(
               firstName: 'Stef',
@@ -86,7 +88,8 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: widget.tab,
         onDestinationSelected: (index) {
-          // TODO: Navigate to specific tab
+          context.go('/$index');
+
         },
         destinations: appBarDestinations,
       ),

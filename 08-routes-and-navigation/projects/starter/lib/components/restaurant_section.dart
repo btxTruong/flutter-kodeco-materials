@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../components/components.dart';
+import '../constants.dart';
 import '../models/models.dart';
 
 class RestaurantSection extends StatelessWidget {
@@ -41,7 +43,8 @@ class RestaurantSection extends StatelessWidget {
                   child: RestaurantLandscapeCard(
                     restaurant: restaurants[index],
                     onTap: () {
-                      // TODO: Navigate to Restaurant
+                      context.go('/${YummyTab.home.value}/restaurant/${restaurants[index].id}');
+
                     },
                   )
                 );
